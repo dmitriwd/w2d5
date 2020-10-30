@@ -1,11 +1,17 @@
+//  Game class is important. It hold all the relevant data. Nothing happens without a game "logically".
+// Game is the single source of information for the status of the game. If somehthing happens to a player, the game is aware
 class Game {
   constructor() {
+    //   the player is part of the game
     this.player = new Character();
+    //  the background is also part of the game. everything will be relevant in the game
     this.background = new Background();
+    // creating an obstacles array so we can populate it later
     this.obstacles = [];
   }
 
   setup() {
+    //   as stated in the main.js: this `meta` method is responsible for setting up anything that still needs to be done. in this case, we defined a setup method in the Background class in order to have access to the variables that p5 *only* gives us access to, whenever the createCanvas has been called - in the setup function
     this.background.setup();
   }
 
@@ -14,17 +20,21 @@ class Game {
     this.player.draw();
 
     if (frameCount % 120 === 0) {
+      // every 2 seconds, push a new obstacle to the obstacles array
       this.obstacles.push(new Obstacle());
     }
 
     this.obstacles.forEach((obstacle, index) => {
       obstacle.draw();
+      // everytime the obstacle goes off canvas, remove it from the array
       if (obstacle.x + obstacle.width <= 0) {
         this.obstacles.splice(index, 1);
       }
 
+      // in this case we are checking that whenever an obstacle is coliding with the player
       if (this.colisionCheck(obstacle, this.player)) {
         console.log("OOOOOH");
+        //   tells p5 to stop calling the draw function
         noLoop();
       }
     });
