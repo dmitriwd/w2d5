@@ -1,5 +1,6 @@
 class Background {
   constructor() {
+    console.log("HERE");
     //  this.height = height;
     //  this.width = width;
     this.x = 0;
