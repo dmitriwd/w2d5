@@ -1,3 +1,6 @@
+// Background is just a class, because its going to have its internal behaviours and it shouldnt be controlled by anything outside of itself.
+// the Game **holds** the background, but its up to the background to behave according to the logic that you want it to do
+// some examples of different logic here, would be to add other background images, different flows, different ways of looping (vertical, reversed, super fast, etc)
 class Background {
   constructor() {
     // console.log("HERE");
@@ -6,7 +9,7 @@ class Background {
     this.x = 0;
   }
 
-  // the setup meta-method is called in the game.js in order to initialize the height and width properties
+  // the setup meta-method is called in the game.js in order to initialize the height and width properties of the Background object
   setup() {
     this.height = height;
     this.width = width;
