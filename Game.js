@@ -22,6 +22,29 @@ class Game {
       if (obstacle.x + obstacle.width <= 0) {
         this.obstacles.splice(index, 1);
       }
+
+      if (this.colisionCheck(obstacle, this.player)) {
+        console.log("OOOOOH");
+        noLoop();
+      }
     });
+  }
+
+  colisionCheck(obstacle, player) {
+    //   player.left + player.width (players.rightSide)
+    if (player.x + player.width < obstacle.x) {
+      return false;
+    }
+    if (obstacle.x + obstacle.width < player.x) {
+      return false;
+    }
+
+    if (player.y > obstacle.y + obstacle.height) {
+      return false;
+    }
+    if (obstacle.y > player.y + player.height) {
+      return false;
+    }
+    return true;
   }
 }
