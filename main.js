@@ -10,9 +10,16 @@ function setup() {
   createCanvas(500, 300);
   myBackground.setup();
 }
+
 function draw() {
   clear();
   background("cyan");
   myBackground.draw();
   player.draw();
+}
+
+function keyPressed() {
+  if (keyCode === 32) {
+    player.jump(10);
+  }
 }

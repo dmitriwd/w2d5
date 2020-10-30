@@ -2,6 +2,7 @@ class Background {
   constructor() {
     //  this.height = height;
     //  this.width = width;
+    this.x = 0;
   }
 
   setup() {
@@ -10,6 +11,13 @@ class Background {
   }
 
   draw() {
-    image(bgImage, 0, 0, this.width + 10, this.height + 20);
+    this.x -= 3;
+
+    image(bgImage, this.x, 0, this.width, this.height);
+    image(bgImage, this.x + this.width, 0, this.width, this.height);
+
+    if (this.x <= -this.width) {
+      this.x = 0;
+    }
   }
 }
