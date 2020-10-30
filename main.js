@@ -4,25 +4,23 @@ function preload() {
   character = loadImage("./assets/character-right.png");
 }
 
-const player = new Character();
+const game = new Game();
 
-const myBackground = new Background();
 function setup() {
   console.log("SETUP");
 
   createCanvas(500, 300);
-  myBackground.setup();
+  game.setup();
 }
 
 function draw() {
   clear();
   background("cyan");
-  myBackground.draw();
-  player.draw();
+  game.draw();
 }
 
 function keyPressed() {
   if (keyCode === 32) {
-    player.jump(10);
+    game.player.jump(10);
   }
 }
